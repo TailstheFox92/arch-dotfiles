@@ -5,10 +5,13 @@ Stow-ready dotfiles extracted from Cyclone.
 ## Quick start
 
 ```bash
-sudo pacman -S --needed stow
 cd ~/workspace/github/gfernandez/arch-dotfiles
+chmod +x ./install-arch.sh
+./install-arch.sh
 stow -t "$HOME" hypr waybar rofi zsh git vscode scripts discord wallpaper
 ```
+
+The installer uses `yay` and bootstraps it automatically if it is missing.
 
 ## Unstow
 
