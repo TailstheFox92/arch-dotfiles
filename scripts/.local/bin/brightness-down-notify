@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+set -eu
+
+brightnessctl set 5%- >/dev/null
+percent="$(brightnessctl -m | awk -F, '{print $4}')"
+notify-send -a "Brightness" -u low -t 1200 "Brightness" "$percent"

@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+set -eu
+
+dir="$HOME/Pictures/Screenshots"
+ts="$(date +"%Y-%m-%d_%H-%M-%S")"
+file="$dir/$ts.png"
+
+mkdir -p "$dir"
+geometry="$(hyprctl -j activewindow | jq -r 'if (.at | type) == "array" and (.size | type) == "array" then "\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])" else empty end')"
+[ -n "$geometry" ] || exit 0
+
+grim -g "$geometry" "$file"
+wl-copy --type image/png < "$file"
+notify-send "Screenshot saved" "$file"

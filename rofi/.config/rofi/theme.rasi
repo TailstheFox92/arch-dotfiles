@@ -1,0 +1,132 @@
+* {
+  bg: #1e1e2e;
+  bg-alt: #313244;
+  fg: #cdd6f4;
+  fg-alt: #bac2de;
+  accent: #cba6f7;
+  urgent: #f38ba8;
+  background-color: transparent;
+  text-color: @fg;
+}
+
+configuration {
+  modi: "drun,run,window";
+  show-icons: true;
+  drun-display-format: "{icon} {name}";
+}
+
+window {
+  width: 38%;
+  border: 2;
+  border-color: @accent;
+  border-radius: 8px;
+  background-color: @bg;
+}
+
+mainbox {
+  spacing: 8px;
+  padding: 10px;
+  background-color: @bg;
+}
+
+inputbar {
+  children: [ prompt, entry ];
+  border: 1px;
+  border-color: @bg-alt;
+  border-radius: 6px;
+  padding: 8px;
+  background-color: @bg-alt;
+}
+
+prompt {
+  text-color: @accent;
+  margin: 0 8px 0 0;
+}
+
+entry {
+  background-color: transparent;
+  text-color: @fg;
+}
+
+textbox-prompt-colon {
+  background-color: transparent;
+  text-color: @accent;
+}
+
+listview {
+  lines: 10;
+  columns: 1;
+  spacing: 4px;
+  scrollbar: true;
+  background-color: @bg;
+}
+
+scrollbar {
+  width: 6px;
+  border: 0;
+  border-radius: 6px;
+  background-color: @bg-alt;
+  handle-width: 6px;
+  handle-color: @accent;
+}
+
+element {
+  children: [ element-icon, element-text ];
+  padding: 8px;
+  border: 1px;
+  border-radius: 6px;
+  border-color: transparent;
+  background-color: transparent;
+  text-color: @fg;
+}
+
+element selected {
+  background-color: @bg-alt;
+  border-color: @accent;
+  text-color: @fg;
+}
+
+element-text selected {
+  background-color: transparent;
+  text-color: @fg;
+}
+
+element-icon {
+  background-color: transparent;
+  size: 20px;
+  margin: 0 10px 0 0;
+}
+
+element-text {
+  background-color: transparent;
+  text-color: @fg;
+}
+
+textbox {
+  background-color: transparent;
+  text-color: @fg;
+}
+
+mode-switcher {
+  spacing: 6px;
+  background-color: @bg;
+}
+
+button {
+  background-color: @bg-alt;
+  text-color: @fg;
+  border: 1px;
+  border-color: transparent;
+  border-radius: 6px;
+  padding: 6px 10px;
+}
+
+button selected {
+  background-color: @bg-alt;
+  border-color: @accent;
+  text-color: @fg;
+}
+
+element urgent {
+  text-color: @urgent;
+}

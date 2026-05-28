@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+set -eu
+
+pamixer -t
+if pamixer --get-mute; then
+  message="Muted"
+else
+  message="$(pamixer --get-volume-human)"
+fi
+notify-send -a "Volume" -u low -t 1200 "Volume" "$message"

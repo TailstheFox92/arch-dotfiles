@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+set -eu
+
+dir="$HOME/Pictures/Screenshots"
+ts="$(date +"%Y-%m-%d_%H-%M-%S")"
+file="$dir/$ts.png"
+
+mkdir -p "$dir"
+geometry="$(slurp)"
+[ -n "$geometry" ] || exit 0
+
+grim -g "$geometry" "$file"
+wl-copy --type image/png < "$file"
+notify-send "Screenshot saved" "$file"

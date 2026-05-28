@@ -1,0 +1,27 @@
+#!/usr/bin/env sh
+set -eu
+
+options="Lock\nLogout\nSuspend\nReboot\nShutdown"
+chosen="$(printf '%b\n' "$options" | rofi -dmenu -i -p "Power" -theme "$HOME/.config/rofi/theme.rasi")"
+
+case "$chosen" in
+  Lock)
+    exec lock-screen
+    ;;
+  Logout)
+    exec hyprctl dispatch exit
+    ;;
+  Suspend)
+    lock-screen
+    exec systemctl suspend
+    ;;
+  Reboot)
+    exec systemctl reboot
+    ;;
+  Shutdown)
+    exec systemctl poweroff
+    ;;
+  *)
+    exit 0
+    ;;
+esac

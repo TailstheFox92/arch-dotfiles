@@ -1,0 +1,6 @@
+[user]
+  name = Gabriel Fernandez
+  email = gfernandez@mailfence.com
+
+[gpg]
+  format = openpgp

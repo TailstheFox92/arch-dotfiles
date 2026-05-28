@@ -1,0 +1,41 @@
+#!/usr/bin/env sh
+set -eu
+
+steamxr_json="$HOME/.local/share/Steam/steamapps/common/SteamVR/steamxr_linux64.json"
+if [ -f "$steamxr_json" ]; then
+  export XR_RUNTIME_JSON="$steamxr_json"
+
+  runtime_dir="$HOME/.config/openxr/1"
+  mkdir -p "$runtime_dir"
+  ln -sfn "$steamxr_json" "$runtime_dir/active_runtime.json"
+fi
+
+export LIBVA_DRIVER_NAME=radeonsi
+export LIBVA_DRIVERS_PATH=/usr/lib/dri
+export PRESSURE_VESSEL_GRAPHICS_PROVIDER=/usr
+export PRESSURE_VESSEL_FILESYSTEMS_RO="${PRESSURE_VESSEL_FILESYSTEMS_RO:+$PRESSURE_VESSEL_FILESYSTEMS_RO:}/usr"
+export QT_QPA_PLATFORM=xcb
+export SDL_VIDEODRIVER=x11
+export GDK_BACKEND=x11
+
+session_file="$HOME/.config/alvr/session.json"
+if [ -f "$session_file" ]; then
+  sed -i \
+    -e 's/"force_sw_encoding"[[:space:]]*:[[:space:]]*true/"force_sw_encoding": false/g' \
+    -e 's/"force_software_encoding"[[:space:]]*:[[:space:]]*true/"force_software_encoding": false/g' \
+    -e 's/"use_separate_hand_trackers"[[:space:]]*:[[:space:]]*true/"use_separate_hand_trackers": false/g' \
+    -e 's/"variant"[[:space:]]*:[[:space:]]*"HEVC"/"variant": "H264"/g' \
+    -e 's/"variant"[[:space:]]*:[[:space:]]*"AV1"/"variant": "H264"/g' \
+    "$session_file"
+fi
+
+if ! pgrep -x alvr_dashboard >/dev/null 2>&1; then
+  alvr_dashboard >/dev/null 2>&1 &
+  sleep 2
+fi
+
+if ! pgrep -f "SteamVR/bin/.*/vrmonitor" >/dev/null 2>&1; then
+  steam -applaunch 250820 >/dev/null 2>&1 &
+fi
+
+exit 0

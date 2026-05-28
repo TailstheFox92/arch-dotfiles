@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+exec swaylock -f -i "$HOME/.local/share/backgrounds/default-wallpaper.jpg" -s fill

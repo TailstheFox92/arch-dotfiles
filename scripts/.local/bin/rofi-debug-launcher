@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+log_dir="$HOME/.local/state/rofi"
+log_file="$log_dir/launcher.log"
+
+mkdir -p "$log_dir"
+{
+  printf '\n[%s] Launching rofi\n' "$(date -Is)"
+  rofi -show drun -theme "$HOME/.config/rofi/theme.rasi" "$@"
+  status=$?
+  printf '[%s] Exit code: %s\n' "$(date -Is)" "$status"
+  exit "$status"
+} >>"$log_file" 2>&1

@@ -1,0 +1,8 @@
+{
+  "editor.fontFamily": "JetBrainsMono Nerd Font, Droid Sans Mono, monospace",
+  "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "dotnet.server.useOmnisharp": true,
+  "unity.preferredExternalEditor": "Visual Studio Code",
+  "unity.openFileOnDoubleClick": true
+}

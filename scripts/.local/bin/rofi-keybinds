@@ -1,0 +1,32 @@
+#!/usr/bin/env sh
+set -eu
+
+printf '%s\n' \
+  "SUPER+Return  Launch terminal (alacritty)" \
+  "SUPER+D       App launcher" \
+  "SUPER+Shift+P Power menu" \
+  "SUPER+Shift+L Lock screen" \
+  "SUPER+Shift+D Vesktop" \
+  "SUPER+Shift+R Launch ALVR dashboard" \
+  "SUPER+E       Thunar" \
+  "SUPER+W       Brave" \
+  "SUPER+Shift+B Bluetooth manager" \
+  "SUPER+Shift+Q Close active window" \
+  "SUPER+Arrows  Focus window" \
+  "SUPER+H/J/K/L Focus window" \
+  "SUPER+Shift+Arrows Move window" \
+  "SUPER+Shift+H/J/K/L Move window" \
+  "SUPER+F       Fullscreen" \
+  "SUPER+V       Toggle floating" \
+  "SUPER+Shift+Space Toggle floating" \
+  "SUPER+Shift+C Reload Hyprland" \
+  "SUPER+1..0    Switch workspace 1..10" \
+  "SUPER+Shift+1..0 Move to workspace 1..10" \
+  "SUPER+-       Toggle scratchpad workspace" \
+  "SUPER+Shift+- Send window to scratchpad" \
+  "Print         Full screenshot" \
+  "Shift+Print   Region screenshot" \
+  "Ctrl+Print    Region screenshot + edit" \
+  "Alt+Print     Focused window screenshot" \
+  "XF86 Audio/Brightness keys Media, volume, brightness" \
+  | rofi -dmenu -i -p "Hyprland keybinds" -theme "$HOME/.config/rofi/theme.rasi"

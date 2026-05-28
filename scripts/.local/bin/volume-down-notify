@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+set -eu
+
+pamixer -d 5
+volume="$(pamixer --get-volume-human)"
+notify-send -a "Volume" -u low -t 1200 "Volume" "$volume"

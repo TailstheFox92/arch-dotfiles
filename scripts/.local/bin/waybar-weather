@@ -1,0 +1,37 @@
+#!/usr/bin/env sh
+set -eu
+
+weather="$(curl -fsS --max-time 6 'https://wttr.in/?format=%c+%f' 2>/dev/null || true)"
+if [ -n "$weather" ]; then
+  echo " $weather"
+  exit 0
+fi
+
+geo="$(curl -fsS --max-time 6 'https://ipapi.co/json/' 2>/dev/null || true)"
+lat="$(printf '%s' "$geo" | jq -r '.latitude // empty')"
+lon="$(printf '%s' "$geo" | jq -r '.longitude // empty')"
+
+if [ -n "$lat" ] && [ -n "$lon" ]; then
+  met="$(curl -fsS --max-time 10 -A 'waybar-weather/1.0 (arch-dotfiles)' "https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=$lat&lon=$lon" 2>/dev/null || true)"
+  if [ -n "$met" ]; then
+    temp="$(printf '%s' "$met" | jq -r '.properties.timeseries[0].data.instant.details.air_temperature // empty')"
+    symbol="$(printf '%s' "$met" | jq -r '.properties.timeseries[0].data.next_1_hours.summary.symbol_code // .properties.timeseries[0].data.next_6_hours.summary.symbol_code // empty')"
+
+    if [ -n "$temp" ]; then
+      temp_round="$(printf '%s\n' "$temp" | awk '{printf "%.0f", (($1 * 9) / 5) + 32}')"
+      icon=""
+      case "$symbol" in
+        *clearsky*|*fair*) icon="" ;;
+        *partlycloudy*) icon="" ;;
+        *cloudy*) icon="" ;;
+        *rain*|*drizzle*) icon="󰖖" ;;
+        *sleet*|*snow*) icon="" ;;
+        *thunder*) icon="" ;;
+      esac
+      echo "$icon ${temp_round}°F"
+      exit 0
+    fi
+  fi
+fi
+
+echo " n/a"

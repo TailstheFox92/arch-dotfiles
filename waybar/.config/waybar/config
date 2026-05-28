@@ -1,0 +1,93 @@
+[
+  {
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["custom/notification", "clock", "custom/keybinds"],
+    "modules-right": ["custom/weather", "pulseaudio", "cpu", "memory", "temperature", "network", "tray", "custom/power"],
+    "hyprland/workspaces": {
+      "disable-scroll": true,
+      "format": "{icon}",
+      "format-icons": {
+        "1": "",
+        "2": "",
+        "3": "",
+        "4": "",
+        "5": "",
+        "6": "",
+        "7": "",
+        "8": "",
+        "9": "",
+        "10": "",
+        "urgent": "",
+        "default": ""
+      }
+    },
+    "custom/weather": {
+      "format": "{}",
+      "interval": 600,
+      "exec": "~/.local/bin/waybar-weather",
+      "tooltip": false
+    },
+    "custom/notification": {
+      "tooltip": false,
+      "format": "{icon}",
+      "return-type": "json",
+      "exec": "swaync-client -swb",
+      "on-click": "swaync-client -t -sw",
+      "on-click-right": "swaync-client -d -sw",
+      "escape": true,
+      "format-icons": {
+        "none": "",
+        "notification": "",
+        "dnd-none": "",
+        "dnd-notification": "",
+        "inhibited-none": "",
+        "inhibited-notification": "",
+        "dnd-inhibited-none": "",
+        "dnd-inhibited-notification": ""
+      }
+    },
+    "custom/power": {
+      "format": "⏻",
+      "tooltip": false,
+      "on-click": "~/.local/bin/rofi-powermenu"
+    },
+    "custom/keybinds": {
+      "format": "󰌌",
+      "tooltip": true,
+      "tooltip-format": "Show keybinds",
+      "on-click": "~/.local/bin/rofi-keybinds"
+    },
+    "cpu": {
+      "format": " {usage}%",
+      "interval": 2
+    },
+    "memory": {
+      "format": " {}%",
+      "interval": 2
+    },
+    "temperature": {
+      "critical-threshold": 85,
+      "format": " {temperatureF}°F",
+      "format-critical": " {temperatureF}°F"
+    },
+    "clock": {
+      "format": "{:%Y-%m-%d %H:%M}"
+    },
+    "network": {
+      "format-wifi": " {essid}",
+      "format-ethernet": " {ifname}",
+      "format-disconnected": " offline"
+    },
+    "pulseaudio": {
+      "format": " {volume}%",
+      "format-muted": "󰖁 muted",
+      "on-click": "pavucontrol"
+    },
+    "tray": {
+      "spacing": 8
+    }
+  }
+]
