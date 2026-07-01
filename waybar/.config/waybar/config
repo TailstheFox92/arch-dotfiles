@@ -52,7 +52,7 @@
     "custom/power": {
       "format": "⏻",
       "tooltip": false,
-      "on-click": "~/.local/bin/rofi-powermenu"
+      "on-click": "rofi -show power-menu -modi power-menu:rofi-power-menu"
     },
     "custom/keybinds": {
       "format": "󰌌",
