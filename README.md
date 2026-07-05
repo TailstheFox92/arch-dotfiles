@@ -8,7 +8,7 @@ Stow-ready dotfiles extracted from Cyclone.
 cd ~/workspace/github/gfernandez/arch-dotfiles
 chmod +x ./install-arch.sh
 ./install-arch.sh
-stow -t "$HOME" hypr waybar rofi zsh git vscode scripts discord wallpaper zathura alacritty
+stow -t "$HOME" hypr waybar rofi zsh git vscode scripts discord wallpaper zathura alacritty swaync
 ```
 
 The installer uses `yay` and bootstraps it automatically if it is missing.
@@ -17,7 +17,7 @@ The installer uses `yay` and bootstraps it automatically if it is missing.
 
 ```bash
 cd ~/workspace/github/gfernandez/arch-dotfiles
-stow -D -t "$HOME" hypr waybar rofi zsh git vscode scripts discord wallpaper zathura alacritty
+stow -D -t "$HOME" hypr waybar rofi zsh git vscode scripts discord wallpaper zathura alacritty swaync
 ```
 
 ## Notes
