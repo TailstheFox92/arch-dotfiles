@@ -96,7 +96,7 @@ main() {
   echo
   echo "Done."
   echo "Next steps:"
-  echo "  1) stow -t \"$HOME\" hypr waybar rofi zsh git vscode scripts discord wallpaper zathura"
+  echo "  1) stow -t \"$HOME\" hypr waybar rofi zsh git vscode scripts discord wallpaper zathura alacritty"
   echo "  2) Reboot or log out/in to ensure services and portals are cleanly loaded"
 }
 
