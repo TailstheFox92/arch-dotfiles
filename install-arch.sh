@@ -46,8 +46,11 @@ install_packages() {
     fastfetch
     firefox
     git
+    glib2
+    gsettings-desktop-schemas
     grim
     hyprland
+    hyprpicker
     jq
     libnotify
     neovim

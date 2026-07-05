@@ -9,6 +9,7 @@ printf '%s\n' \
   "SUPER+Shift+D Vesktop" \
   "SUPER+E       Thunar" \
   "SUPER+W       Brave" \
+  "SUPER+C       Color picker" \
   "SUPER+Shift+B Bluetooth manager" \
   "SUPER+Shift+Q Close active window" \
   "SUPER+Arrows  Focus window" \
